@@ -1,0 +1,4 @@
+{
+  "watch": ["server.js","pdfParts.js"],
+  "ext": "js, json"
+}
