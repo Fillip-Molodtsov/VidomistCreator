@@ -298,7 +298,9 @@ const reasonH = (reason) => {
 }
 
 const getVyklInfo = (vykl) => {
-    let arr = [vykl.pib, vykl.scienceDegree, vykl.zvanya]
+    let arr = [vykl.pib]
+    if (vykl.scienceDegree) arr.push(vykl.scienceDegree)
+    if (vykl.zvanya) arr.push(vykl.zvanya)
     if (vykl.posada) arr.push(vykl.posada)
     return arr.join(', ')
 }
