@@ -192,7 +192,7 @@ const getInfo = (data) => {
                 },
                 {
                     width: 'auto',
-                    text:{text: headerInfo.groupId, style:['f16', 'bold']}
+                    text:{text: getGroupId(data), style:['f16', 'bold']}
                 },
             ],
             // optional space between columns
@@ -229,6 +229,14 @@ const getInfo = (data) => {
                 {
                     width: 'auto',
                     text: {text: headerInfo.zalikBali, style:['underline', 'bold']}
+                },
+                {
+                    width: 30,
+                    text: ''
+                },
+                {
+                    width: 'auto',
+                    text: {text: 'Направлення дійсне до'}
                 },
             ],
             // optional space between columns
@@ -268,6 +276,10 @@ const getInfo = (data) => {
         },
         {text: 'Прізвище, ім’я, по батькові екзаменатора',alignment:'center', margin:[0, 0, 0,20], style:['f10']}
     ]
+}
+
+const getGroupId = data => {
+    return data.isBigunets ? 'бігунець': data.headerInfo.groupId
 }
 
 const getInfoByDocType = (data) => {
