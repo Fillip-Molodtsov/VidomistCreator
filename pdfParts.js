@@ -156,6 +156,7 @@ const getDocTypeTitle = isBigunets => {
 
 const getInfo = (data) => {
     const {headerInfo} = data
+    const {isBigunets} = data
     const {vykl} = headerInfo
     return [
         { columns: [
@@ -214,34 +215,31 @@ const getInfo = (data) => {
             margin:[0,0,0,0]
         },
         { columns: [
-                {
-                    width: 'auto',
-                    text: 'Семестр'
-                },
-                {
-                    width: 'auto',
-                    text: {text: ` ${headerInfo.semestr} `, decoration: 'underline'}
-                },
-                {
-                    width: 'auto',
-                    text: 'Залікові бали'
-                },
-                {
-                    width: 'auto',
-                    text: {text: headerInfo.zalikBali, style:['underline', 'bold']}
-                },
-                {
-                    width: 30,
-                    text: ''
-                },
-                {
-                    width: 'auto',
-                    text: {text: 'Направлення дійсне до'}
-                },
-            ],
-            // optional space between columns
-            columnGap: 5,
-            margin:[0,0,0,0]
+            {
+                width: 'auto',
+                text: 'Семестр'
+            },
+            {
+                width: 'auto',
+                text: {text: ` ${headerInfo.semestr} `, decoration: 'underline'}
+            },
+            {
+                width: 'auto',
+                text: 'Залікові бали'
+            },
+            {
+                width: 'auto',
+                text: {text: headerInfo.zalikBali, style:['underline', 'bold']}
+            },
+            {
+                width: 30,
+                text: ''
+            },
+            ...diysneDo(isBigunets)
+        ],
+        // optional space between columns
+        columnGap: 5,
+        margin:[0,0,0,0]
         },
         { columns: [
                 {
@@ -276,6 +274,14 @@ const getInfo = (data) => {
         },
         {text: 'Прізвище, ім’я, по батькові екзаменатора',alignment:'center', margin:[0, 0, 0,20], style:['f10']}
     ]
+}
+
+const diysneDo = isBigunets => {
+    return isBigunets ? 
+        [{
+            width: 'auto',
+            text: {text: 'Направлення дійсне до'}
+        }] : [];
 }
 
 const getGroupId = data => {
